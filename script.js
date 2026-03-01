@@ -1,57 +1,60 @@
-const searchBtn = document.getElementById("searchBtn");
-const city1Input = document.getElementById("city1");
-const city2Input = document.getElementById("city2");
-const weatherResult = document.getElementById("weatherResult");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
 
-const apiKey = "32793ff8dbe3a9933ab5f36266d1a4c2"; // ← OpenWeatherMap APIキーに置き換える
+body {
+  background: #fff;
+  color: #000;
+}
 
-searchBtn.addEventListener("click", () => {
-  const city1 = city1Input.value.trim();
-  const city2 = city2Input.value.trim();
+/* header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 60px;
+  border-bottom: 1px solid #e0e0e0;
+}
 
-  if (!city1 || !city2) {
-    weatherResult.innerHTML = "<p>Please enter both cities.</p>";
-    return;
-  }
+.logo {
+  font-size: 32px;
+  font-weight: normal;
+}
 
-  Promise.all([
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city1)}&appid=${apiKey}&units=metric&lang=en`).then(res => res.json()),
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city2)}&appid=${apiKey}&units=metric&lang=en`).then(res => res.json())
-  ])
-  .then(([data1, data2]) => {
-    if (data1.cod !== 200 || data2.cod !== 200) {
-      weatherResult.innerHTML = "<p>One or both cities not found.</p>";
-      return;
-    }
+.nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+}
 
-// 既存の天気カード生成部分を変更
-weatherResult.innerHTML = `
-  <div class="city-card">
-    <h2>${data1.name}</h2>
-    <img src="https://openweathermap.org/img/wn/${data1.weather[0].icon}@2x.png" alt="icon">
-    <p>Weather: ${data1.weather[0].description}</p>
-    <p style="color:${data1.main.temp > data2.main.temp ? 'red' : 'blue'}">
-      Temp: ${data1.main.temp} °C
-    </p>
-    <p>Wind: ${data1.wind.speed} m/s</p>
-  </div>
+/* gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding: 60px;
+}
 
-  <div class="city-card">
-    <h2>${data2.name}</h2>
-    <img src="https://openweathermap.org/img/wn/${data2.weather[0].icon}@2x.png" alt="icon">
-    <p>Weather: ${data2.weather[0].description}</p>
-    <p style="color:${data2.main.temp > data1.main.temp ? 'red' : 'blue'}">
-      Temp: ${data2.main.temp} °C
-    </p>
-    <p>Wind: ${data2.wind.speed} m/s</p>
-  </div>
-`;
+.card {
+  background: #f0f0f0;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+}
 
-       
+.card:hover {
+  background: #e5e5e5;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
 
-  })
-  .catch(err => {
-    weatherResult.innerHTML = "<p>Error fetching data.</p>";
-    console.error(err);
-  });
-});
+.card span {
+  color: #777;
+  font-size: 14px;
+}
