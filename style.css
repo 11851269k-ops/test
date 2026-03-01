@@ -1,0 +1,66 @@
+body {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  margin: 20px;
+  background-color: #f4f4f9;
+}
+
+h1 {
+  font-weight: 300; /* 細字 */
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.input-area {
+  margin-bottom: 20px;
+}
+
+.input-area input {
+  padding: 8px 12px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.input-area button {
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.input-area button:hover {
+  background-color: #2980b9;
+}
+
+#weatherResult {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.city-card {
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  width: 180px;
+  background-color: #fff;
+  transition: transform 0.2s;
+}
+
+.city-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 3px 3px 12px rgba(0,0,0,0.2);
+}
+
+.city-card img {
+  width: 80px;
+  height: 80px;
+}
