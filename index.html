@@ -1,30 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Two-City Weather Comparison</title>
-
-  <!-- Chart.js CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <!-- 外部CSS -->
+  <title>Kipano Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>Two-City Weather Comparison</h1>
+<header class="header">
+  <h1 class="logo">Kipano</h1>
+  <nav class="nav">
+    <a href="#">illustration</a>
+    <a href="#">Graphic design</a>
+    <a href="#">About</a>
+  </nav>
+</header>
 
-  <div class="input-area">
-    <input type="text" id="city1" placeholder="City 1 (e.g. Tokyo)">
-    <input type="text" id="city2" placeholder="City 2 (e.g. Osaka)">
-    <button id="searchBtn">Compare</button>
+<main class="gallery">
+  <div class="card" data-id="1">
+    <span>illustration</span>
   </div>
+  <div class="card" data-id="2">
+    <span>illustration</span>
+  </div>
+  <div class="card" data-id="3">
+    <span>illustration</span>
+  </div>
+</main>
 
-  <div id="weatherResult"></div>
-
-  
-
-  <!-- 外部JS -->
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
